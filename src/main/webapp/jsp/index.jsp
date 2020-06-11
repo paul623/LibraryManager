@@ -1,9 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/23
-  Time: 16:56
-  To change this template use File | Settings | File Templates.
+  User: 巴塞罗那的余晖
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

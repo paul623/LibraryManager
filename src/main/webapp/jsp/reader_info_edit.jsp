@@ -1,4 +1,7 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: 巴塞罗那的余晖
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background:url(images/reader_main.jpg) ;background-size:cover; ">
 <nav class="navbar navbar-default" role="navigation" style="background-color:#fff">
     <div class="container-fluid">
         <div class="navbar-header" style="margin-left: 8%;margin-right: 1%">

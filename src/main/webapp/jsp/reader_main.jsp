@@ -1,9 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/30
-  Time: 18:52
-  To change this template use File | Settings | File Templates.
+  User: 巴塞罗那的余晖
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -18,8 +15,7 @@
         }
     </style>
 </head>
-<body>
-<body>
+<body style="background:url(images/reader_main.jpg) ;background-size:cover; ">
 <nav class="navbar navbar-default" role="navigation" style="background-color:#fff" style="background-color:#fff">
     <div class="container-fluid">
         <div class="navbar-header" style="margin-left: 8%;margin-right: 1%">

@@ -1,9 +1,7 @@
-<%@ page import="com.paul.javaweb.book.entity.Book" %><%--
+<%@ page import="com.paul.javaweb.book.entity.Book" %>
+<%--
   Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/24
-  Time: 19:25
-  To change this template use File | Settings | File Templates.
+  User: 巴塞罗那的余晖
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +17,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background:url(images/reader_main.jpg) ;background-size:cover; ">
 
 <nav class="navbar navbar-default" role="navigation" style="background-color:#fff">
     <div class="container-fluid">

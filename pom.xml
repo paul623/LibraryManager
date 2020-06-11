@@ -50,6 +50,11 @@
         </dependency>
         <!-- tomcat的支持-->
         <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.2.2.jre8</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
@@ -76,19 +81,38 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.2.RELEASE</version>
+                <configuration>
+                    <!--使devtools能够起作用-->
+                    <fork>true</fork>
+                </configuration>
             </plugin>
+
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <!-- 指定resources插件处理哪个目录下的资源文件 -->
+                <directory>src/main/webapp</directory>
+                <!--注意此次必须要放在此目录下才能被访问到 -->
+                <targetPath>META-INF/resources</targetPath>
                 <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                    <include>**./*.html</include>
-                    <include>static/**</include>
+                    <include>**/**</include>
                 </includes>
             </resource>
-
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <!-- 将项目中的配置文件，打包至classes下面 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
         </resources>
     </build>
 
