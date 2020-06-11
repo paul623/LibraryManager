@@ -1,10 +1,10 @@
-package com.paul.java.paul.service;
+package com.paul.javaweb.book.service;
 
-import com.paul.java.paul.entity.ReaderCard;
-import com.paul.java.paul.entity.ReaderInfo;
-import com.paul.java.paul.mapper.AdminMapper;
-import com.paul.java.paul.mapper.ReaderCardMapper;
-import com.paul.java.paul.mapper.ReaderInfoMapper;
+import com.paul.javaweb.book.entity.ReaderCard;
+import com.paul.javaweb.book.entity.ReaderInfo;
+import com.paul.javaweb.book.mapper.AdminMapper;
+import com.paul.javaweb.book.mapper.ReaderCardMapper;
+import com.paul.javaweb.book.mapper.ReaderInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

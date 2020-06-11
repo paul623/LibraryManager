@@ -1,14 +1,15 @@
-package com.paul.java.paul.mapper;
+package com.paul.javaweb.book.mapper;
 
-import com.paul.java.paul.entity.Lend;
+import com.paul.javaweb.book.entity.Lend;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Mapper
 public interface LendMapper {
     @Update("UPDATE lend_list SET back_date = #{date} WHERE book_id = #{bookId} AND back_date is NULL")
     public int bookReturnOne(Date date, long bookId);

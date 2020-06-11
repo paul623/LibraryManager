@@ -1,4 +1,4 @@
-package com.paul.java.paul;
+package com.paul.javaweb.book;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

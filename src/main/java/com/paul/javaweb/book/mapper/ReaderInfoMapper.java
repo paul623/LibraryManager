@@ -1,6 +1,6 @@
-package com.paul.java.paul.mapper;
+package com.paul.javaweb.book.mapper;
 
-import com.paul.java.paul.entity.ReaderInfo;
+import com.paul.javaweb.book.entity.ReaderInfo;
 import org.apache.ibatis.annotations.*;
 
 

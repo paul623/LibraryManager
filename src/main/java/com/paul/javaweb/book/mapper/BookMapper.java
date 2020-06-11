@@ -1,6 +1,6 @@
-package com.paul.java.paul.mapper;
+package com.paul.javaweb.book.mapper;
 
-import com.paul.java.paul.entity.Book;
+import com.paul.javaweb.book.entity.Book;
 import org.apache.ibatis.annotations.*;
 
 import java.math.BigDecimal;
@@ -21,13 +21,13 @@ public interface BookMapper {
     @Delete("delete from book_info where book_id = #{bookId}  ")
     public int deleteBook(long bookId);
 
-    @Insert("INSERT INTO book_info(name,author,publish,ISBN,introduction,language,price,pubdate,class_id,pressmark,state) VALUES(#{name},#{author},#{publish},#{ISBN},#{introduction},#{language},#{price},#{pubdate},#{class_id},#{pressmark},#{state})")
+    @Insert("INSERT INTO book_info(name,author,publish,ISBN,introduction,language,price,pubdate,class_id,pressmark,state) VALUES(#{name},#{author},#{publish},#{isbn},#{introduction},#{language},#{price},#{pubdate},#{class_id},#{pressmark},#{state})")
     public int addBook(String name, String author, String publish, String isbn, String introduction, String language, BigDecimal price, Date pubdate, int class_id, int pressmark, int state);
 
     @Select("SELECT * FROM book_info where book_id = #{bookId}")
     public Book getBook(Long bookId);
 
-    @Update("update book_info set name= #{name} ,author= #{author} ,publish= #{publish} ,ISBN= #{isbn} ,introduction= #{introduction} ,language= ? ,price= #{price} ,pubdate= #{pubdate} ,class_id= #{class_id} ,pressmark= #{pressmark} ,state= #{state}  where book_id= #{book_id} ")
+    @Update("update book_info set name= #{name} ,author= #{author} ,publish= #{publish} ,ISBN= #{isbn} ,introduction= #{introduction} ,language= #{language} ,price= #{price} ,pubdate= #{pubdate} ,class_id= #{class_id} ,pressmark= #{pressmark} ,state= #{state}  where book_id= #{book_id} ")
     public int editBook(long book_id,String name, String author, String publish, String isbn, String introduction, String language, BigDecimal price, Date pubdate, int class_id, int pressmark, int state);
 
 }

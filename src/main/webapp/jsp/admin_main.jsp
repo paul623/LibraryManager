@@ -1,3 +1,4 @@
+<%@ page import="com.paul.javaweb.book.entity.Admin" %>
 <%--
   Created by IntelliJ IDEA.
   User: 君行天下
@@ -5,14 +6,14 @@
   Time: 17:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>管理主页</title>
-    <link rel="stylesheet" href="../resources/static/css/bootstrap.min.css">
-    <script src="../resources/static/js/jquery-3.2.1.js"></script>
-    <script src="../resources/static/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
     <style>
         body{
             margin: 0;
@@ -30,7 +31,7 @@
     </style>
 
 </head>
-<body background="img/281289-106.jpg">
+<body background="images/281289-106.jpg">
 <nav  style="position:fixed;z-index: 999;width: 100%;background-color: #fff" class="navbar navbar-default" role="navigation" >
     <div class="container-fluid">
         <div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
@@ -76,7 +77,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.html"><span class="glyphicon glyphicon-user"></span>&nbsp;${admin.adminId}，已登录</a></li>
+                <li><a href="login.html"><span class="glyphicon glyphicon-user"></span>&nbsp${sessionScope.admin.adminId}，已登录</a></li>
                 <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span>&nbsp;退出</a></li>
             </ul>
         </div>

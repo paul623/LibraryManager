@@ -1,7 +1,6 @@
-package com.paul.java.paul.mapper;
+package com.paul.javaweb.book.mapper;
 
-import com.paul.java.paul.entity.ReaderCard;
-import com.paul.java.paul.entity.ReaderInfo;
+import com.paul.javaweb.book.entity.ReaderCard;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +12,7 @@ public interface ReaderCardMapper {
     public int getMatchCount(int readerId,String passwd);
     @Select("select reader_id, name, passwd, card_state from reader_card where reader_id = #{userId} ")
     public ReaderCard findReaderByReaderId(int userId);
-    @Update("UPDATE reader_card set passwd = #{readerId} where reader_id = #{newPasswd} ")
+    @Update("UPDATE reader_card set passwd = #{newPasswd} where reader_id = #{readerId} ")
     public int rePassword(int readerId,String newPasswd);
     @Insert("INSERT INTO reader_card (reader_id,name) values ( #{readerId} , #{name})")
     public int addReaderCard(String name,int readerId);

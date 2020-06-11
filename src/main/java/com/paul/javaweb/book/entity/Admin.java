@@ -1,4 +1,4 @@
-package com.paul.java.paul.entity;
+package com.paul.javaweb.book.entity;
 
 public class Admin {
 

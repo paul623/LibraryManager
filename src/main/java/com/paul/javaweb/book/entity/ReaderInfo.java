@@ -1,4 +1,4 @@
-package com.paul.java.paul.entity;
+package com.paul.javaweb.book.entity;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,12 +1,11 @@
-package com.paul.java.paul.service;
+package com.paul.javaweb.book.service;
 
-import com.paul.java.paul.entity.Book;
-import com.paul.java.paul.mapper.BookMapper;
+import com.paul.javaweb.book.entity.Book;
+import com.paul.javaweb.book.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

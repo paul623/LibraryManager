@@ -1,4 +1,4 @@
-<%@ page import="com.book.domain.Book" %><%--
+<%@ page import="com.paul.javaweb.book.entity.Book" %><%--
   Created by IntelliJ IDEA.
   User: 君行天下
   Date: 2017/7/24
@@ -10,9 +10,9 @@
 <html>
 <head>
     <title>全部图书信息</title>
-    <link rel="stylesheet" href="../resources/static/css/bootstrap.min.css">
-    <script src="../resources/static/js/jquery-3.2.1.js"></script>
-    <script src="../resources/static/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
     <style>
         body{
             background-color: rgb(240,242,245);
