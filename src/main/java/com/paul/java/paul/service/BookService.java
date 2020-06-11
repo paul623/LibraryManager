@@ -13,6 +13,6 @@ public class BookService {
     BookMapper bookMapper;
 
     public List<Book> getAll(){
-        return bookMapper.QueryBooks();
+        return bookMapper.getAllBooks();
     }
 }

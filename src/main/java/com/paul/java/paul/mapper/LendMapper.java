@@ -1,14 +1,25 @@
 package com.paul.java.paul.mapper;
 
 import com.paul.java.paul.entity.Lend;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public interface LendMapper {
-    public int bookReturnOne(long bookId);
+    @Update("UPDATE lend_list SET back_date = #{date} WHERE book_id = #{bookId} AND back_date is NULL")
+    public int bookReturnOne(Date date, long bookId);
+    @Update("UPDATE book_info SET state = 1 WHERE book_id = #{bookId}")
     public int bookReturnTwo(long bookId);
-    public int bookLendOne(long bookId,int readerId);
+    @Insert("INSERT INTO lend_list (book_id,reader_id,lend_date) VALUES ( #{bookId} , #{readerId} , #{date} )")
+    public int bookLendOne(long bookId,int readerId,Date date);
+    @Update("UPDATE book_info SET state = 0 WHERE book_id = #{bookId} ")
     public int bookLendTwo(long bookId);
+    @Select("SELECT * FROM lend_list")
     public List<Lend> lendList();
-    
+    @Select("SELECT * FROM lend_list WHERE reader_id = #{readerId}")
+    public List<Lend> myLendList(int readerId);
 }
