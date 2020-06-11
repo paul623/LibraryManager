@@ -68,7 +68,12 @@ public class ReaderController {
     public String readerInfoEditDo(HttpServletRequest request,String name,String sex,String birth,String address,String telcode,RedirectAttributes redirectAttributes){
         int readerId= Integer.parseInt(request.getParameter("id"));
         ReaderCard readerCard = loginService.findReaderCardByUserId(readerId);
+        if(readerCard==null){
+            redirectAttributes.addFlashAttribute("error", "用户状态异常，请联系管理员！");
+            return "redirect:/allreaders.html";
+        }
         String oldName=readerCard.getName();
+
         if(!oldName.equals(name)){
             boolean succo=readerCardService.updateName(readerId,name);
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");

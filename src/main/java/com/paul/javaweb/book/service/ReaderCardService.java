@@ -13,7 +13,7 @@ public class ReaderCardService {
     public boolean addReaderCard(ReaderInfo readerInfo){
         String name=readerInfo.getName();
         int readerId=readerInfo.getReaderId();
-        return  readerCardMapper.addReaderCard(name,readerId)>0;
+        return  readerCardMapper.addReaderCard(name,readerId,"111111")>0;
     }
     public boolean updatePasswd(int readerId,String passwd){
         return readerCardMapper.rePassword(readerId,passwd)>0;

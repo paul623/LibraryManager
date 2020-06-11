@@ -40,4 +40,14 @@ public class ReaderCard implements Serializable {
     public String getPasswd() {
         return passwd;
     }
+
+    @Override
+    public String toString() {
+        return "ReaderCard{" +
+                "readerId=" + readerId +
+                ", name='" + name + '\'' +
+                ", passwd='" + passwd + '\'' +
+                ", cardState=" + cardState +
+                '}';
+    }
 }
