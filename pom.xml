@@ -85,6 +85,7 @@
                 <configuration>
                     <!--使devtools能够起作用-->
                     <fork>true</fork>
+                    <mainClass>com.paul.javaweb.book.LibraryManagerApplication</mainClass>
                 </configuration>
             </plugin>
 
