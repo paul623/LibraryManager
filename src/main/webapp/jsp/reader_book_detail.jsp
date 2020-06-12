@@ -69,6 +69,10 @@
                     <td>${detail.author}</td>
                 </tr>
                 <tr>
+                    <th>索书号</th>
+                    <td>${detail.bookId}</td>
+                </tr>
+                <tr>
                     <th>出版社</th>
                     <td>${detail.publish}</td>
                 </tr>

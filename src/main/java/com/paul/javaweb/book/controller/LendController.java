@@ -1,6 +1,7 @@
 package com.paul.javaweb.book.controller;
 
 import com.paul.javaweb.book.entity.Book;
+import com.paul.javaweb.book.entity.Lend;
 import com.paul.javaweb.book.entity.ReaderCard;
 import com.paul.javaweb.book.service.BookService;
 import com.paul.javaweb.book.service.LendService;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LendController {
@@ -68,6 +71,19 @@ public class LendController {
     public ModelAndView myLend(HttpServletRequest request){
         ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
         ModelAndView modelAndView=new ModelAndView("reader_lend_list");
+        List<Lend> userLendList=lendService.myLendList(readerCard.getReaderId());
+        List<Book> books=new ArrayList<>();
+        for(Lend i:userLendList){
+            Book book=bookService.getBook(i.getBookId());
+            if(book==null){
+                books.add(new Book());
+                System.out.println("获取书为空");
+            }else {
+                books.add(book);
+                System.out.println(book.getName());
+            }
+        }
+        modelAndView.addObject("books",books);
         modelAndView.addObject("list",lendService.myLendList(readerCard.getReaderId()));
         return modelAndView;
     }

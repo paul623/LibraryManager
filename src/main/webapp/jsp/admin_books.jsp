@@ -124,6 +124,7 @@
             <thead>
             <tr>
                 <th>书名</th>
+                <th>索书号</th>
                 <th>作者</th>
                 <th>出版社</th>
                 <th>ISBN</th>
@@ -138,6 +139,7 @@
             <c:forEach items="${books}" var="book">
             <tr>
                 <td><c:out value="${book.name}"></c:out></td>
+                <td><c:out value="${book.bookId}"></c:out></td>
                 <td><c:out value="${book.author}"></c:out></td>
                 <td><c:out value="${book.publish}"></c:out></td>
                 <td><c:out value="${book.isbn}"></c:out></td>

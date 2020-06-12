@@ -82,6 +82,10 @@
                     <td>${detail.name}</td>
                 </tr>
                 <tr>
+                    <th>索书号</th>
+                    <td>${detail.bookId}</td>
+                </tr>
+                <tr>
                     <th>作者</th>
                     <td>${detail.author}</td>
                 </tr>

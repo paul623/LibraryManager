@@ -30,7 +30,7 @@ public class ReaderInfoService {
         int readerId=readerInfo.getReaderId();
         String sex=readerInfo.getSex();
         String telcode=readerInfo.getTelcode();
-        return readerInfoMapper.editReaderInfo(address,sex,birth,address,telcode,readerId)>0;
+        return readerInfoMapper.editReaderInfo(name,sex,birth,address,telcode,readerId)>0;
     }
     public boolean addReaderInfo(ReaderInfo readerInfo){
         String address=readerInfo.getAddress();
