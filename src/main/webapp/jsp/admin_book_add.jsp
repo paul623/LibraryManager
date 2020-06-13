@@ -1,3 +1,6 @@
+<%@ page import="com.paul.javaweb.book.entity.ClassInfo" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 巴塞罗那的余晖
@@ -9,6 +12,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js" ></script>
+    <script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <style>
         body{
             background-color: rgb(240,242,245);
@@ -16,6 +22,14 @@
     </style>
 
 </head>
+<script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn')
+        });
+    });
+</script>
 <body>
 <nav  style="position:fixed;z-index: 999;width: 100%;background-color: #fff" class="navbar navbar-default" role="navigation" >
     <div class="container-fluid">
@@ -101,11 +115,26 @@
                 </div>
                 <div class="form-group">
                     <label for="pubdate">出版日期</label>
-                    <input type="text" class="form-control"  name="pubdate" id="pubdate"   placeholder="请输入出版日期">
+                    <!--<input type="text" class="form-control"  name="pubdate" id="pubdate"   placeholder="请输入出版日期">-->
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control"  name="pubdate" id="pubdate" placeholder="请选择日期"/>
+                        <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="classId">分类号</label>
-                    <input type="text" class="form-control" name="classId" id="classId"  placeholder="请输入分类号">
+                    <br>
+                    <label>
+                        <select name="classId" id="classId">
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${classInfos}" var="i">
+                                <option value="${i.classId}">${i.className}</option>
+                            </c:forEach>
+                        </select>
+                    </label>
+                    <!--<input type="text" class="form-control" name="classId" id="classId"  placeholder="请输入分类号">-->
                 </div>
                 <div class="form-group">
                     <label for="pressmark">书架号</label>
@@ -113,7 +142,10 @@
                 </div>
                 <div class="form-group">
                     <label for="state">状态</label>
-                    <input type="text" class="form-control"  name="state"  id="state"   placeholder="请输入图书状态">
+                    <select name="state" id="state" >
+                        <option value="1">在馆</option>
+                    </select>
+                    <!--<input type="text" class="form-control"  name="state"  id="state"   placeholder="请输入图书状态">-->
                 </div>
 
 

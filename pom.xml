@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.paul.java</groupId>
     <artifactId>paul</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>LibraryManager</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Library System</description>
 
     <properties>
         <java.version>1.8</java.version>

@@ -1,15 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%--
   Created by IntelliJ IDEA.
   User: 巴塞罗那的余晖
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>编辑《 ${detail.name}》</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js" ></script>
+    <script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <style>
         body{
             background-color: rgb(240,242,245);
@@ -18,6 +21,14 @@
 
 </head>
 <body>
+<script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn')
+        });
+    });
+</script>
 <nav  style="position:fixed;z-index: 999;width: 100%;background-color: #fff" class="navbar navbar-default" role="navigation" >
     <div class="container-fluid">
         <div class="navbar-header" style="margin-left: 8%;margin-right: 1%">
@@ -108,11 +119,24 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">出版日期</span>
-                    <input type="text" class="form-control" name="pubdate" id="pubdate" value="${detail.pubdate}">
+                    <!--<input type="text" class="form-control" name="pubdate" id="pubdate" value="{detail.pubdate}">-->
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control"  id="pubdate" name="pubdate" value="${detail.pubdate}"/>
+                        <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                    </div>
                 </div>
                 <div class="input-group">
                     <span  class="input-group-addon">分类号</span>
-                    <input type="text" class="form-control" name="classId" id="classId" value="${detail.classId}">
+                    <label>
+                        <select name="classId" id="classId">
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${classInfos}" var="i">
+                                <option value="${i.classId}">${i.className}</option>
+                            </c:forEach>
+                        </select>
+                    </label>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">书架号</span>

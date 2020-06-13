@@ -120,5 +120,20 @@ public class BookAddCommand {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "BookAddCommand{" +
+                "name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", publish='" + publish + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", language='" + language + '\'' +
+                ", price=" + price +
+                ", pubdate=" + pubdate +
+                ", classId=" + classId +
+                ", pressmark=" + pressmark +
+                ", state=" + state +
+                '}';
+    }
 }

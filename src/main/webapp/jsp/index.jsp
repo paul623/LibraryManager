@@ -219,6 +219,7 @@
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
         <button id="loginButton"  class="btn btn-primary  btn-block">登陆
         </button>
+        <label>当前版本v0.03 更新日期：2020.6.13</label>
     </div>
 </div>
     <script>

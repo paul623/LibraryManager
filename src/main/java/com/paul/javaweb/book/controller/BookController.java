@@ -2,7 +2,9 @@ package com.paul.javaweb.book.controller;
 
 
 import com.paul.javaweb.book.entity.Book;
+import com.paul.javaweb.book.entity.ClassInfo;
 import com.paul.javaweb.book.service.BookService;
+import com.paul.javaweb.book.service.ClassInfoService;
 import com.paul.javaweb.book.utils.BookAddCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookService bookService;
+    @Autowired
+    private ClassInfoService classInfoService;
 
     @RequestMapping("/querybook.html")
     public ModelAndView queryBookDo(HttpServletRequest request, String searchWord) throws UnsupportedEncodingException {
@@ -79,12 +83,16 @@ public class BookController {
     @RequestMapping("/book_add.html")
     public ModelAndView addBook(HttpServletRequest request) throws UnsupportedEncodingException {
         request.setCharacterEncoding("utf-8");
-        return new ModelAndView("admin_book_add");
+        List<ClassInfo> classInfos=classInfoService.getAll();
+        ModelAndView modelAndView=new ModelAndView("admin_book_add");
+        modelAndView.addObject("classInfos",classInfos);
+        return modelAndView;
 
     }
 
     @RequestMapping("/book_add_do.html")
     public String addBookDo(BookAddCommand bookAddCommand, RedirectAttributes redirectAttributes){
+        System.out.println("测试:"+bookAddCommand);
         Book book=new Book();
         book.setBookId(0);
         book.setPrice(bookAddCommand.getPrice());
@@ -116,8 +124,10 @@ public class BookController {
         request.setCharacterEncoding("utf-8");
         long bookId=Integer.parseInt(request.getParameter("bookId"));
         Book book=bookService.getBook(bookId);
+        List<ClassInfo> classInfos=classInfoService.getAll();
         ModelAndView modelAndView=new ModelAndView("admin_book_edit");
         modelAndView.addObject("detail",book);
+        modelAndView.addObject("classInfos",classInfos);
         return modelAndView;
     }
 
