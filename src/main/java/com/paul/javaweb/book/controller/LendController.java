@@ -60,20 +60,9 @@ public class LendController {
     }
 
 
-    @RequestMapping("/lendlist.html")
-    public ModelAndView lendList(){
-
-        ModelAndView modelAndView=new ModelAndView("admin_lend_list");
-        modelAndView.addObject("list",lendService.lendList());
-        return modelAndView;
-    }
-    @RequestMapping("/mylend.html")
-    public ModelAndView myLend(HttpServletRequest request){
-        ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
-        ModelAndView modelAndView=new ModelAndView("reader_lend_list");
-        List<Lend> userLendList=lendService.myLendList(readerCard.getReaderId());
+    private List<Book> getBooksByLendList(List<Lend> lends){
         List<Book> books=new ArrayList<>();
-        for(Lend i:userLendList){
+        for(Lend i:lends){
             Book book=bookService.getBook(i.getBookId());
             if(book==null){
                 books.add(new Book());
@@ -83,7 +72,23 @@ public class LendController {
                 System.out.println(book.getName());
             }
         }
-        modelAndView.addObject("books",books);
+        return books;
+    }
+    @RequestMapping("/lendlist.html")
+    public ModelAndView lendList(){
+        List<Lend> lends=lendService.lendList();
+        ModelAndView modelAndView=new ModelAndView("admin_lend_list");
+        modelAndView.addObject("list",lends);
+        modelAndView.addObject("books",getBooksByLendList(lends));
+
+        return modelAndView;
+    }
+    @RequestMapping("/mylend.html")
+    public ModelAndView myLend(HttpServletRequest request){
+        ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
+        ModelAndView modelAndView=new ModelAndView("reader_lend_list");
+        List<Lend> userLendList=lendService.myLendList(readerCard.getReaderId());
+        modelAndView.addObject("books",getBooksByLendList(userLendList));
         modelAndView.addObject("list",lendService.myLendList(readerCard.getReaderId()));
         return modelAndView;
     }
