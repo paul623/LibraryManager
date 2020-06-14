@@ -3,19 +3,36 @@
 
 ## 碎碎念
 
-### 编写该系统的目的
+### 写在前面
+软工实习的产物
+因为一直学习的是安卓，Web这面也就是写过后台来给安卓提供数据。
+之前那个货运输品管理系统只有设计最后没有实现
+这次就尝试做一个完整的WEB项目。
+本项目参考自[Books-Management-System](https://github.com/withstars/Books-Management-System)
+前端基本使用的是该项目的页面，这里对作者开源表示感谢。
+后台重构了一遍，增加了一些功能。
 
-图书馆系统啊。。。。待补充
+Web这块算是我第一次完整前后端都写，大佬求轻喷
 
-综合各方面考虑，采用B/S结构更适用于该需求，用户只需要一个可以上网的设备，打开浏览器输入相应的网址即可访问系统。功能性的改进只需要对服务器进行升级即可，对用户端无任何影响。
+里面还有些许bug欢迎和我一起完善
 
 ### 服务器要求
+#### 标准要求
 
 操作系统：Centos 7.4 或 Ubuntu 16及以上版本系统。
 
 数据库：Mysql 5.7以上
 
-WEB 服务器：Nginx1.14.0以上版本以及 Tomcat7以上 
+WEB 服务器：Nginx1.14.0以上版本以及 Tomcat7以上
+ #### 其他数据库
+- 我在项目中已经集成了sqlserver和mysql两个版本
+使用其他数据库请自行添加驱动。
+- 推荐使用Navicat Premium，项目中提供的是mysql的sql转存文件
+- mysql转sqlserver或者其他数据库的方法
+	- 分别在mysql和sqlserver中创建数据库 librarydb，编码选utf-8
+	- 将sql文件导入mysql的数据库中
+	- 在 工具->数据传输 分别选择两个数据库，传输即可
+	- 注意，经测试自增属性不会在sqlserver中设置生效，需要手动打开sqlserver管理器去分别设置主键的自增，否则系统运行会报错（如书本添加）
 
 ### 开发环境
 
@@ -38,13 +55,67 @@ SpringBoot MVC+Bootstrap+JSP
 [paul623](https://github.com/paul623)
 
 ### 食用方法
+- 数据库配置
 推荐使用navicat
 创建一个名为librarydb的数据库，注意你的编码格式为utf-8
-然后将sql文件拖拽转存即可
-
+然后将sql文件拖拽转存即可（其他数据库请参考前面服务器要求）
+- 项目配置
 项目请到properties中去修改对应数据库账号和密码
-提供两种形式，mysql和sqlserver
+- 打jar包
+	- 使用maven clean
+	- maven install
+	- 可以在pom中调整版本或者包名
+- 部署服务器
+  - linux
 
+    ```shell
+    #窗口调试
+    java -jar [名称].jar
+    #后台运行
+    nohup java -jar [名称].jar
+    ```
+
+  - Windows Server
+
+    我觉得这个部署挺麻烦的，直接写两个bat文件来完成启动、停止操作（停止会将所有java进程停止）
+
+    你可以将启动bat添加到开机启动这样就实现了开机自动启动
+
+    start.bat
+
+    ```bat
+    @echo off
+    
+    title 正在启动Admin
+    
+    color 0A
+    
+    start javaw -jar [名称].jar
+    
+    echo .
+    echo ----后台管理系统-启动成功----
+    pause
+    exit
+    ```
+
+    stop.bat
+
+    ```bat
+    @echo off
+    
+    title StopAdmin
+    
+    color 0A
+    
+    taskkill -f -t -im javaw.exe
+    
+    echo .
+    echo ---停止成功---
+    
+    pause
+    
+    exit 
+    ```
 ### 更新日志
 ```$xslt
 2020.6.14 v0.0.4
@@ -60,7 +131,7 @@ SpringBoot MVC+Bootstrap+JSP
 本地编译通过
 ```
 
-## 最初功能设计
+## 功能设计
 
 **普通用户：**
 
@@ -68,8 +139,9 @@ SpringBoot MVC+Bootstrap+JSP
 由于图书馆基本属于会员制，故不提供自行注册功能。
 登录、修改个人信息资料、修改密码
 搜索书目、查看书目详情
-查看自己借阅列表 
- **管理员：**
+查看自己借阅列表 （包括借阅日期、归还日期、状态、还有多长时间到期等等）
+
+**管理员：**
 
 **维护系统功能正常，对用户、图书进行管理**
 
@@ -89,6 +161,8 @@ SpringBoot MVC+Bootstrap+JSP
 
 *登录、修改个人信息、修改密码、查询书目、查看个人借阅信息*
 
+
+
 管理员：id、密码
 *登录、修改密码、增加用户、修改用户、增加书目、修改书目、借阅操作、归还操作*
 
@@ -100,8 +174,8 @@ SpringBoot MVC+Bootstrap+JSP
 |            |             |
 
 | ID   | 用户名   |  密码     | 用户类型|
-| ---- | -------- | ----------- | -------- | 
-| ID   | reader_id| name| passed| card_state| 
+| ---- | -------- | ----------- | -------- |
+| ID   | reader_id| name| passed| card_state|
 
 | 读者信息 | reader_info|
 | -------------- | ---------- |
@@ -123,8 +197,8 @@ SpringBoot MVC+Bootstrap+JSP
 | ------------ | ---------- |
 |              |            |
 
-| ID   | 可借阅时长 | 类别名称| 
-| ---- | ------------ | ----------- | 
+| ID   | 可借阅时长 | 类别名称|
+| ---- | ------------ | ----------- |
 | class_state| day_long| type_name|
 
 | 书本 | book_info|
@@ -141,7 +215,7 @@ SpringBoot MVC+Bootstrap+JSP
 
 | ID   | 分类名称     |
 | ---- | --------- |
-| class_id| class_name| 
+| class_id| class_name|
 
 | 借阅表 | lend_list|
 | -------------------- | ---------- |
@@ -150,4 +224,4 @@ SpringBoot MVC+Bootstrap+JSP
 | ID   | 索书号   |读者号  | 借阅日期  | 归还日期 |
 | ---- | ----------- | ---------------- | ----------------------- | -------- |
 | semum  | book_id | reader_id| lend_date| back_date  |
-    
+
