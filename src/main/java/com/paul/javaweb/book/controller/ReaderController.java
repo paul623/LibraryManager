@@ -1,10 +1,13 @@
 package com.paul.javaweb.book.controller;
 
+import com.paul.javaweb.book.entity.CardType;
 import com.paul.javaweb.book.entity.ReaderCard;
 import com.paul.javaweb.book.entity.ReaderInfo;
+import com.paul.javaweb.book.service.CardTypeService;
 import com.paul.javaweb.book.service.LoginService;
 import com.paul.javaweb.book.service.ReaderCardService;
 import com.paul.javaweb.book.service.ReaderInfoService;
+import com.sun.jmx.snmp.SnmpOid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,11 +29,18 @@ public class ReaderController {
     LoginService loginService;
     @Autowired
     ReaderCardService readerCardService;
+    @Autowired
+    CardTypeService cardTypeService;
     @RequestMapping("allreaders.html")
     public ModelAndView allBooks(){
         List<ReaderInfo> readers=readerInfoService.readerInfos();
         ModelAndView modelAndView=new ModelAndView("admin_readers");
         modelAndView.addObject("readers",readers);
+        List<CardType> cardTypes=new ArrayList<>();
+        for(ReaderInfo i:readers){
+            cardTypes.add(cardTypeService.getCardType(i.getReaderId()));
+        }
+        modelAndView.addObject("cardType",cardTypes);
         return modelAndView;
     }
 
@@ -52,7 +63,9 @@ public class ReaderController {
         ReaderCard readerCard=(ReaderCard) request.getSession().getAttribute("readercard");
         ReaderInfo readerInfo=readerInfoService.getReaderInfo(readerCard.getReaderId());
         ModelAndView modelAndView=new ModelAndView("reader_info");
+        modelAndView.addObject("readerType",cardTypeService.getCardType(readerCard));
         modelAndView.addObject("readerinfo",readerInfo);
+
         return modelAndView;
     }
     @RequestMapping("reader_edit.html")
@@ -133,6 +146,7 @@ public class ReaderController {
     @RequestMapping("reader_add.html")
     public ModelAndView readerInfoAdd(){
         ModelAndView modelAndView=new ModelAndView("admin_reader_add");
+        modelAndView.addObject("cardType",cardTypeService.getAll());
         return modelAndView;
 
     }
@@ -179,7 +193,7 @@ public class ReaderController {
     }
     //管理员功能--读者信息添加
     @RequestMapping("reader_add_do.html")
-    public String readerInfoAddDo(String name,String sex,String birth,String address,String telcode,int readerId,RedirectAttributes redirectAttributes){
+    public String readerInfoAddDo(String name,String sex,String birth,String address,String telcode,int classState,int readerId,RedirectAttributes redirectAttributes){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date nbirth=new Date();
         try{
@@ -197,7 +211,7 @@ public class ReaderController {
         readerInfo.setTelcode(telcode);
         readerInfo.setSex(sex);
         boolean succ=readerInfoService.addReaderInfo(readerInfo);
-        boolean succc=readerCardService.addReaderCard(readerInfo);
+        boolean succc=readerCardService.addReaderCard(readerInfo,classState);
         List<ReaderInfo> readers=readerInfoService.readerInfos();
         if (succ&&succc){
             redirectAttributes.addFlashAttribute("succ", "添加读者信息成功！");

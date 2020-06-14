@@ -1,4 +1,5 @@
 <%@ page import="com.paul.javaweb.book.entity.Book" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: 巴塞罗那的余晖
@@ -93,6 +94,7 @@
                 <th>借出日期</th>
                 <th>归还日期</th>
                 <th>状态</th>
+                <th>时长</th>
             </tr>
             </thead>
             <tbody>
@@ -102,15 +104,8 @@
                     <td><c:out value="${requestScope.books[status.index].name}"></c:out></td>
                     <td><c:out value="${alog.lendDate}"></c:out></td>
                     <td><c:out value="${alog.backDate}"></c:out></td>
-                    <c:if test="${empty alog.backDate}">
-                        <td>未还</td>
-                    </c:if>
-                    <c:if test="${!empty alog.backDate}">
-                        <td>已还</td>
-                    </c:if>
-                    <c:if test="">
-                        <td>超期</td>
-                    </c:if>
+                    <td><c:out value="${requestScope.timeLong[status.index].status}"></c:out></td>
+                    <td><c:out value="${requestScope.timeLong[status.index].timeLong}"></c:out></td>
                 </tr>
             </c:forEach>
             </tbody>

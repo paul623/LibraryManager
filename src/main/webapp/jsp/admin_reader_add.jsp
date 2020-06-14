@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%--
   Created by IntelliJ IDEA.
   User: 巴塞罗那的余晖
@@ -78,9 +79,20 @@
             <form action="reader_add_do.html" method="post" id="readeredit" >
                 <div class="input-group">
                     <span  class="input-group-addon">读者证号</span>
-                    <input  type="text" class="form-control" name="readerId" id="readerId" ">
+                    <input  type="text" class="form-control" name="readerId" id="readerId">
                 </div>
-
+                <div class="input-group">
+                    <span  class="input-group-addon">用户类型</span>
+                    <label>
+                        <select name="classState" id="classState">
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${cardType}" var="i">
+                                <option value="${i.class_state}">${i.type_name}</option>
+                            </c:forEach>
+                        </select>
+                    </label>
+                    <!--<input type="text" class="form-control" name="classId" id="classId"  placeholder="请输入分类号">-->
+                </div>
                 <div class="input-group">
                     <span class="input-group-addon">姓名</span>
                     <input type="text" class="form-control" name="name" id="name"  >
@@ -107,7 +119,7 @@
                         return flag;
                     }
                     $("#readeredit").submit(function () {
-                        if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''){
+                        if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubdate").val()==''||$("#classId").val()==''||$("#pressmark").val()==''||$("#state").val()==''||$("#classState").val==''){
                             alert("请填入完整读者信息！");
                             return mySubmit(false);
                         }

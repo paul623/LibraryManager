@@ -96,6 +96,10 @@
                     <td>${readerinfo.birth}</td>
                 </tr>
                 <tr>
+                    <th>用户类型</th>
+                    <td>${readerType.type_name}(${readerType.day_long}天)</td>
+                </tr>
+                <tr>
                     <th>地址</th>
                     <td>${readerinfo.address}</td>
                 </tr>

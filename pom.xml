@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.paul.java</groupId>
     <artifactId>paul</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4-ALPHA</version>
     <name>LibraryManager</name>
     <description>Library System</description>
 

@@ -10,10 +10,10 @@ public class ReaderCardService {
     @Autowired
     ReaderCardMapper readerCardMapper;
 
-    public boolean addReaderCard(ReaderInfo readerInfo){
+    public boolean addReaderCard(ReaderInfo readerInfo,int card_state){
         String name=readerInfo.getName();
         int readerId=readerInfo.getReaderId();
-        return  readerCardMapper.addReaderCard(name,readerId,"111111")>0;
+        return  readerCardMapper.addReaderCard(name,readerId,"111111",card_state)>0;
     }
     public boolean updatePasswd(int readerId,String passwd){
         return readerCardMapper.rePassword(readerId,passwd)>0;

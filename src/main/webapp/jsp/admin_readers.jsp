@@ -107,6 +107,7 @@
                 <th>读者号</th>
                 <th>姓名</th>
                 <th>性别</th>
+                <th>类别</th>
                 <th>生日</th>
                 <th>地址</th>
                 <th>电话</th>
@@ -115,11 +116,12 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${readers}" var="reader">
+            <c:forEach items="${readers}" var="reader" varStatus="status">
                 <tr>
                     <td><c:out value="${reader.readerId}"></c:out></td>
                     <td><c:out value="${reader.name}"></c:out></td>
                     <td><c:out value="${reader.sex}"></c:out></td>
+                    <td><c:out value="${cardType.get(status.index).type_name}"></c:out></td>
                     <td><c:out value="${reader.birth}"></c:out></td>
                     <td><c:out value="${reader.address}"></c:out></td>
                     <td><c:out value="${reader.telcode}"></c:out></td>
