@@ -11,7 +11,7 @@
  Target Server Version : 50519
  File Encoding         : 65001
 
- Date: 14/06/2020 11:12:39
+ Date: 14/06/2020 22:17:43
 */
 
 SET NAMES utf8mb4;
@@ -169,11 +169,10 @@ CREATE TABLE `reader_card`  (
 -- ----------------------------
 -- Records of reader_card
 -- ----------------------------
-INSERT INTO `reader_card` VALUES (1171325415, '朱保罗', '123456', 1);
-INSERT INTO `reader_card` VALUES (1171325416, '周涛', '111111', 4);
-INSERT INTO `reader_card` VALUES (1171325613, '江苏省淮安市阿斯顿', '222222', 1);
-INSERT INTO `reader_card` VALUES (1171325614, '毛兰', '111111', 1);
-INSERT INTO `reader_card` VALUES (1171325721, '黄从刚', '222222', 1);
+INSERT INTO `reader_card` VALUES (1171325415, '小朱', '123456', 1);
+INSERT INTO `reader_card` VALUES (1171325613, '阿斯顿', '222222', 1);
+INSERT INTO `reader_card` VALUES (1171325614, '小毛', '111111', 1);
+INSERT INTO `reader_card` VALUES (1171325721, '小黄', '222222', 1);
 
 -- ----------------------------
 -- Table structure for reader_info
@@ -192,9 +191,9 @@ CREATE TABLE `reader_info`  (
 -- ----------------------------
 -- Records of reader_info
 -- ----------------------------
-INSERT INTO `reader_info` VALUES (1171325415, '朱保罗', '男', '2020-06-12', '江苏省淮安市', '17851559306');
-INSERT INTO `reader_info` VALUES (1171325613, '江苏省淮安市阿斯顿', '女', '1999-01-01', '江苏省淮安市阿斯顿', '22222');
-INSERT INTO `reader_info` VALUES (1171325614, '毛兰', '男', '1999-01-01', '江苏省徐州市', '15851732562');
-INSERT INTO `reader_info` VALUES (1171325721, '黄从刚', '男', '2020-06-13', '江苏省徐州市', '1956440223');
+INSERT INTO `reader_info` VALUES (1171325415, '小猪', '男', '2020-06-12', '江苏省', '111111');
+INSERT INTO `reader_info` VALUES (1171325613, '阿斯顿', '女', '1999-01-01', '江苏省', '22222');
+INSERT INTO `reader_info` VALUES (1171325614, '小毛', '男', '1999-01-01', '江苏省', '1111111');
+INSERT INTO `reader_info` VALUES (1171325721, '小黄', '男', '2020-06-13', '江苏省', '1111111');
 
 SET FOREIGN_KEY_CHECKS = 1;
