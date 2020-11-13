@@ -49,11 +49,11 @@
             window.location.href="login.html";
 </script>
 </c:if>
-<h2 style="text-align: center;font-family: 'Adobe 楷体 Std R';color: palevioletred">图 书 馆</h2>
+<h2 style="text-align: center;font-family: 'Adobe 楷体 Std R';color: palevioletred">图书信息管理系统</h2>
 <div style="float:right;" id="github_iframe"></div>
 <script>
     /**
-     * Copyright (c) 2016 hustcc
+     * Copyright (c) 2020 paul623
      * License: MIT
      * Version: %%GULP_INJECT_VERSION%%
      * GitHub: https://github.com/hustcc/canvas-nest.js
@@ -219,7 +219,7 @@
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
         <button id="loginButton"  class="btn btn-primary  btn-block">登陆
         </button>
-        <label>当前版本v0.04 更新日期：2020.6.14</label>
+        <label>当前版本v0.4.2 更新日期：2020.11.12</label>
     </div>
 </div>
     <script>

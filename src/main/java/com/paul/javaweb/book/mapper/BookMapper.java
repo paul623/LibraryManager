@@ -12,10 +12,10 @@ public interface BookMapper {
     @Select("SELECT * FROM book_info")
     public List<Book> getAllBooks();
 
-    @Select("SELECT * FROM book_info WHERE book_id like #{sw} or name like #{sw}")
+    @Select("SELECT * FROM book_info WHERE book_id like #{sw} or name like #{sw} ")
     public List<Book> queryBook(String sw);
 
-    @Select("SELECT count(*) FROM book_info WHERE book_id like #{searchWord}  or name like #{searchWord}  ")
+    @Select("SELECT count(*) FROM book_info WHERE book_id like #{searchWord}  or name like #{searchWord} ")
     public int matchBook(String searchWord);
 
     @Delete("delete from book_info where book_id = #{bookId}  ")

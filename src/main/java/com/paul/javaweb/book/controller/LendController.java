@@ -5,9 +5,7 @@ import com.paul.javaweb.book.entity.BookStatus;
 import com.paul.javaweb.book.entity.Lend;
 import com.paul.javaweb.book.entity.ReaderCard;
 import com.paul.javaweb.book.mapper.CardTypeMapper;
-import com.paul.javaweb.book.service.BookService;
-import com.paul.javaweb.book.service.CardTypeService;
-import com.paul.javaweb.book.service.LendService;
+import com.paul.javaweb.book.service.*;
 import com.paul.javaweb.book.utils.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +24,8 @@ public class LendController {
     @Autowired
     BookService bookService;
     @Autowired
+    LoginService loginService;
+    @Autowired
     CardTypeService cardTypeService;
     @RequestMapping("/lendbook.html")
     public ModelAndView bookLend(HttpServletRequest request){
@@ -39,12 +39,17 @@ public class LendController {
     @RequestMapping("/lendbookdo.html")
     public String bookLendDo(HttpServletRequest request, RedirectAttributes redirectAttributes, int readerId){
         long bookId=Integer.parseInt(request.getParameter("id"));
+        if(loginService.findReaderCardByUserId(readerId)==null){
+            redirectAttributes.addFlashAttribute("error", "图书借阅失败,请检查读者证件号是否合法");
+            return "redirect:/allbooks.html";
+        }
         boolean lendsucc=lendService.bookLend(bookId,readerId);
+
         if (lendsucc){
             redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
             return "redirect:/allbooks.html";
         }else {
-            redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
+            redirectAttributes.addFlashAttribute("error", "图书借阅失败,请检查图书状态");
             return "redirect:/allbooks.html";
         }
 

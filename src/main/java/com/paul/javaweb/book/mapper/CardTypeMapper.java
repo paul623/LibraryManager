@@ -4,7 +4,7 @@ import com.paul.javaweb.book.entity.CardType;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import javax.smartcardio.Card;
+
 import java.util.List;
 
 @Mapper
